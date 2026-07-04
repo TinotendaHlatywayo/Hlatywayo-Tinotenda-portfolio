@@ -11,6 +11,9 @@ import { Inter } from 'next/font/google';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useRouter } from 'next/router';
 
+// 1. ADD THE VERCEL IMPORT HERE
+import { Analytics } from "@vercel/analytics/next";
+
 // --- Font Configuration (No Change) ---
 const inter = Inter({
   subsets: ['latin'],
@@ -19,34 +22,27 @@ const inter = Inter({
 });
 
 // --- New Animation Configuration ---
-// These are the "variants" that define the states of our animation
 const pageVariants = {
-  initial: { opacity: 0, y: 5 }, // Reduced the initial distance
+  initial: { opacity: 0, y: 5 }, 
   in: { opacity: 1, y: 0 },
-  out: { opacity: 0, y: -5 }, // Reduced the exit distance
+  out: { opacity: 0, y: -5 }, 
 };
 
 const pageTransition = {
   type: 'tween',
-  ease: 'easeInOut', // Changed from 'anticipate' to a smoother, faster ease
-  duration: 0.3,   // <-- THE KEY CHANGE: Reduced from 0.5s to 0.3s
+  ease: 'easeInOut', 
+  duration: 0.3,   
 };
 
 // --- The Main App Component (Updated) ---
 export default function App({ Component, pageProps }: AppProps) {
-  const router = useRouter(); // We need the router to get the current URL path
+  const router = useRouter(); 
 
   return (
     <div className={`${inter.variable} font-sans`}>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         <Layout>
-          {/* AnimatePresence is the magic component that makes exit animations possible */}
           <AnimatePresence mode="wait">
-            {/* 
-              This motion.div is the component that will be animated.
-              The 'key' is CRUCIAL. It tells Framer Motion that the component has changed
-              (because the URL route has changed), triggering the animation.
-            */}
             <motion.div
               key={router.route}
               variants={pageVariants}
@@ -60,6 +56,10 @@ export default function App({ Component, pageProps }: AppProps) {
           </AnimatePresence>
         </Layout>
       </ThemeProvider>
+      
+      {/* 2. ADD THE ANALYTICS COMPONENT HERE */}
+      {/* Placing it just inside the main div ensures it tracks every route change */}
+      <Analytics />
     </div>
   );
 }
