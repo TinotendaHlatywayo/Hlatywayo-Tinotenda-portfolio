@@ -1,5 +1,6 @@
+
 // src/components/layout/Footer.tsx
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaLinkedin, FaTwitter, FaLink } from 'react-icons/fa';
 import { siteConfig } from '@/content/siteConfig';
 
 // A mapping from social name to icon component
@@ -11,7 +12,7 @@ const iconMap = {
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  
+
   return (
     <footer className="bg-light-card dark:bg-dark-card py-6 mt-12 shadow-inner">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center text-dark-subtle">
@@ -29,10 +30,10 @@ const Footer = () => {
               >
                 <Icon size={24} />
               </a>
-            )
+            );
           })}
         </div>
-        
+
         <p>© {currentYear} {siteConfig.author}. All Rights Reserved.</p>
       </div>
     </footer>
@@ -40,3 +41,4 @@ const Footer = () => {
 };
 
 export default Footer;
+
