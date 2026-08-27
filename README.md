@@ -20,7 +20,7 @@ This portfolio is more than just a list of my experiences; it's a demonstration 
 *   **Interactive Elements:** Smooth page transitions and subtle on-scroll animations powered by Framer Motion.
 *   **Performance Optimized:** Built with Next.js for static site generation (SSG), optimized fonts with `next/font`, and best practices for a high Lighthouse score.
 *   **SEO & Accessibility:** Semantic HTML, ARIA attributes, and dynamic meta tags for optimal search engine visibility and screen reader support.
-
+*   **Access it at twhlatywayo.vercel.app**
 ---
 
 ## 🛠️ Tech Stack & Architecture
